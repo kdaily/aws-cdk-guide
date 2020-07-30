@@ -8,7 +8,7 @@ You can use any editor or IDE. Many AWS CDK developers use [Visual Studio Code](
 
 To work with the AWS CDK, you must have an AWS account and credentials and have installed Node\.js and the AWS CDK Toolkit\. See [AWS CDK Prerequisites](work-with.md#work-with-prerequisites) for more information\.
 
-Python AWS CDK applications require Python 3\.6 or later\. If you don't already have it installed, [download a compatible version](https://www.python.org/downloads/) for your platform at [python\.org](https://www.python.org/)\. If you run Linux, your system may have come with a compatible version, or you may install it using your distro's package manager \(`yum`, `apt`, etc\.\)\. Mac users may be interested in [Homebrew](https://brew.sh/), a Linux\-style package manager for Mac OS X\.
+Python AWS CDK applications require Python 3\.6 or later\. If you do not already have it installed, [download a compatible version](https://www.python.org/downloads/) for your platform at [python\.org](https://www.python.org/)\. If you run Linux, your system may have come with a compatible version, or you may install it using your distro's package manager \(`yum`, `apt`, etc\.\)\. Mac users may be interested in [Homebrew](https://brew.sh/), a Linux\-style package manager for Mac OS X\.
 
 The Python package installer, `pip`, and virtual environment manager, `virtualenv`, are also required\. Windows installations of compatible Python versions include these tools\. On Linux, `pip` and `virtualenv` may be provided as separate packages in your package manager\. Alternatively, you may install them with the following commands:
 
@@ -50,7 +50,7 @@ pip install -r requirements.txt
 ```
 
 **Important**  
-Activate the project's virtual environment whenever you start working on it\. If you don't, you won't have access to the modules installed there, and modules you install will go in Python's global module directory \(or will result in a permission error\)\.
+Activate the project's virtual environment whenever you start working on it\. Otherwise, you will not have access to the modules installed there, and modules you install will go in the Python global module directory \(or will result in a permission error\)\.
 
 ## Managing AWS construct library modules<a name="python-managemodules"></a>
 
@@ -102,9 +102,9 @@ bucket.add_lifecycle_rule(
 )
 ```
 
-When extending a class or overriding a method, you may want to accept additional arguments for your own purposes that are not understood by the parent class\. In this case you should accept the arguments you don not care about using the `**kwargs` idiom, and use keyword\-only arguments to accept the arguments you are interested in\. When calling the parent's constructor or the overridden method, pass only the arguments it is expecting \(often just `**kwargs`\)\. Passing arguments that the parent class or method doesn't expect results in an error\.
+When extending a class or overriding a method, you may want to accept additional arguments for your own purposes that are not understood by the parent class\. In this case you should accept the arguments you don not care about using the `**kwargs` idiom, and use keyword\-only arguments to accept the arguments you are interested in\. When calling the parent's constructor or the overridden method, pass only the arguments it is expecting \(often just `**kwargs`\)\. Passing arguments that the parent class or method does not expect results in an error\.
 
-Future releases of the AWS CDK may coincidentally add a new property with a name you used for your own property\. This will not cause any technical issues for users of your construct or method \(since your property isn't passed "up the chain," the parent class or overridden method will simply use a default value\) but it may cause confusion\. You can avoid this potential problem by naming your properties so they clearly belong to your construct \(e\.g\. `bob_encryption` rather than just `encryption`, assuming you're Bob\)\. If there are many new properties, bundle them into an appropriately\-named class \(`BobBucketPoperties`?\) and pass it as a single keyword argument\.
+Future releases of the AWS CDK may coincidentally add a new property with a name you used for your own property\. This will not cause any technical issues for users of your construct or method \(since your property is not passed "up the chain," the parent class or overridden method will simply use a default value\) but it may cause confusion\. You can avoid this potential problem by naming your properties so they clearly belong to your construct \(e\.g\. `bob_encryption` rather than just `encryption`, assuming you're Bob\)\. If there are many new properties, bundle them into an appropriately\-named class \(`BobBucketPoperties`?\) and pass it as a single keyword argument\.
 
 ### Missing values<a name="python-missing-values"></a>
 
@@ -166,6 +166,6 @@ cdk deploy "*Stack"   @ PipeStack, LambdaStack, etc.
 ```
 
 **Tip**  
-You don't need to explicitly synthesize stacks before deploying them; `cdk deploy` performs this step for you to make sure your latest code gets deployed\.
+You do not need to explicitly synthesize stacks before deploying them; `cdk deploy` performs this step for you to make sure your latest code gets deployed\.
 
 For full documentation of the `cdk` command, see [AWS CDK Toolkit \(`cdk` command\)](cli.md)\.
