@@ -123,7 +123,7 @@ Python does not have an [interface](https://en.wikipedia.org/wiki/Interface_(com
 
 To indicate that a class implements a particular interface, you can use the `@jsii.implements` decorator:
 
-```
+```python
 from aws_cdk.core import IAspect, IConstruct
 import jsii
 
@@ -135,30 +135,32 @@ class MyAspect():
 
 ### Type pitfalls<a name="python-type-pitfalls"></a>
 
-Python natively uses dynamic typing, where variables may refer to a value of any type\. Parameters and return values may be annotated with types, but these are "hints" and are not enforced\. This means that in Python, it is easy to pass the incorrect type of value to a AWS CDK construct\. Instead of getting a type error during build, as you would from a statically\-typed language, you may instead get a runtime error when the JSII layer \(which translates between Python and the AWS CDK's TypeScript core\) is unable to deal with the unexpected type\.
+Python uses dynamic typing, where variables may refer to a value of any type\. Parameters and return values may be annotated with types, but these are "hints" and are not enforced\. This means that in Python, it is easy to pass the incorrect type of value to a AWS CDK construct\. Instead of getting a type error during build, as you would from a statically\-typed language, you may instead get a runtime error when the JSII layer \(which translates between Python and the AWS CDK's TypeScript core\) is unable to deal with the unexpected type\.
 
 In our experience, the type errors Python programmers make tend to fall into these categories\. Be especially alert to these pitfalls\.
+
 + Passing a single value where a construct expects a container \(Python list or dictionary\) or vice versa\.
 + Passing a value of a type associated with a Level 1 \(`CfnXxxxxx`\) construct to a higher\-level construct, or vice versa\.
 
-The AWS CDK Python modules do include type annotations\. If you are not using an IDE that supports these, such as [PyCharm](https://www.jetbrains.com/pycharm/), you might want to call the [MyPy](http://mypy-lang.org/) type validator as a step in your build process\. There are also runtime type checkers that can improve error messages for type\-related errors\.
+The AWS CDK Python modules do include type hints\. If you are not using an IDE that supports these, such as [PyCharm](https://www.jetbrains.com/pycharm/), you might want to call the [MyPy](http://mypy-lang.org/) type validator as a step in your build process\. There are also runtime type checkers that can improve error messages for type\-related errors\.
 
 ## Synthesizing and deploying<a name="python-running"></a>
 
 The [stacks](stacks.md) defined in your AWS CDK app can be deployed individually or together using the commands below\. Generally, you should be in your project's main directory when you issue them\.
+
 + `cdk synth`: Synthesizes a AWS CloudFormation template from one or more of the stacks in your AWS CDK app\.
 + `cdk deploy`: Deploys the resources defined by one or more of the stacks in your AWS CDK app to AWS\.
 
-You can specify the names of multiple stacks to be synthesized or deployed in a single command\. If your app defines only one stack, you do not need to specify it\. 
+You can specify the names of multiple stacks to be synthesized or deployed in a single command\. If your app defines only one stack, you do not need to specify it\.
 
-```
+```console
 cdk synth                 # app defines single stack
 cdk deploy Happy Grumpy   @ app defines two or more stacks; two are deployed
 ```
 
-You may also use the wildcards \* \(any number of characters\) and ? \(any single character\) to identify stacks by pattern\. When using wildcards, enclose the pattern in quotes; otherwise, the shell may try to expand \("glob"\) it to the names of files in the current directory before they are passed to the AWS CDK Toolkit\.
+You may also use the wildcards `*` \(any number of characters\) and `?` \(any single character\) to identify stacks by pattern\. When using wildcards, enclose the pattern in quotes. Otherwise, the shell may try to expand \("glob"\) it to the names of files in the current directory before they are passed to the AWS CDK Toolkit\.
 
-```
+```console
 cdk synth "Stack?"    # Stack1, StackA, etc.
 cdk deploy "*Stack"   @ PipeStack, LambdaStack, etc.
 ```
