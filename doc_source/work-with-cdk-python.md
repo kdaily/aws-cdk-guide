@@ -2,7 +2,7 @@
 
 Python is a fully\-supported client language for the AWS CDK and is considered stable\. Working with the AWS CDK in Python uses familiar tools, including the standard Python implementation \(dubbed CPython\), `virtualenv`, and `pip`, the Python package installer\. The modules comprising the AWS Construct Library are distributed via [pypi\.org](https://pypi.org/search/?q=aws-cdk)\. The Python version of the AWS CDK even uses Python\-style identifiers \(for example, `snake_case` method names\)\.
 
-You can use any editor or IDE; many AWS CDK developers use [Visual Studio Code](https://code.visualstudio.com/) \(or its open\-source equivalent [VSCodium](https://github.com/VSCodium/vscodium)\), which has good support for Python via an [official extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), though the simple IDLE editor included with Python will suffice to get started\. The Python modules for the AWS CDK do have type hints, so you may prefer a linting tool or an IDE that supports type validation\.
+You can use any editor or IDE. Many AWS CDK developers use [Visual Studio Code](https://code.visualstudio.com/) \(or its open\-source equivalent [VSCodium](https://github.com/VSCodium/vscodium)\), which has good support for Python via an [official extension](https://marketplace.visualstudio.com/items?itemName=ms-python.python), though the simple IDLE editor included with Python will suffice to get started\. The Python modules for the AWS CDK do have type hints, so you may prefer a linting tool or an IDE that supports type validation\.
 
 ## Prerequisites<a name="python-prerequisites"></a>
 
